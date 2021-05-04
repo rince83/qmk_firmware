@@ -77,20 +77,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMB] = LAYOUT_ergodox(
        // left hand
-       KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-       KC_TRNS,KC_EXLM,KC_UNDS,KC_LBRC,KC_RBRC,KC_CIRC,KC_TRNS,
-       KC_TRNS,KC_BSLS,KC_SLSH,KC_LCBR,KC_RCBR,KC_ASTR,
-       KC_TRNS,KC_HASH,KC_DOLLAR,KC_PIPE,KC_TILD,KC_GRV,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,     KC_F1,       KC_F2,           KC_F3,          KC_F4,          KC_F5,  KC_TRNS,
+       KC_TRNS,     KC_EXLM,     KC_UNDS,         KC_LBRC,        KC_RBRC,        KC_CIRC,KC_TRNS,
+       KC_TRNS,     KC_BSLS,     KC_SLSH,         KC_LCBR,        KC_RCBR,        KC_ASTR,
+       KC_TRNS,     KC_HASH,     KC_DOLLAR,       KC_PIPE,        KC_TILD,        KC_GRV, KC_TRNS,
+       KC_LCTL,     KC_LALT,     KC_LGUI,         KC_TRNS,KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
-       KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
-       KC_TRNS, KC_EXLM, KC_LT,  KC_GT,   KC_EQL,  KC_AMPR, KC_F12,
-                KC_QUES, KC_LPRN,KC_RPRN, KC_MINS, KC_COLN, KC_AT,
-       KC_TRNS, KC_PLUS, KC_PERC,KC_DQUO, KC_QUOT, KC_SCLN, KC_TRNS,
-                         KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
+       KC_TRNS,     KC_F6,      KC_F7,          KC_F8,          KC_F9,          KC_F10,  KC_F11,
+       KC_TRNS,     KC_EXLM,    KC_LT,          KC_GT,          KC_EQL,         KC_AMPR, KC_F12,
+                    KC_QUES,    KC_LPRN,        KC_RPRN,        KC_MINS,        KC_COLN, KC_AT,
+       KC_TRNS,     KC_PLUS,    KC_PERC,        KC_DQUO,        KC_QUOT,        KC_SCLN, KC_TRNS,
+                                KC_TRNS,        KC_DOT,         KC_RGUI,        KC_RALT,  KC_RCTL,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
