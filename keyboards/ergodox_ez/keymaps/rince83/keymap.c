@@ -8,6 +8,8 @@
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define MDIA 2 // media keys
+#define WIN 3 // windows layer
+#define WIN_SYM 4 // windows symbol layer
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -48,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              TG(SYMB),    KC_Z,   KC_U,         KC_I,       KC_O,          KC_P,             KC_BSLS,
                           KC_H,   GUI_T(KC_J),  ALT_T(KC_K),CTL_T(KC_L),   LT(MDIA, KC_SCLN),LT(SYMB, KC_COMMA),
              MO(MDIA),    KC_N,   KC_M,         KC_COMM,    KC_DOT,        CTL_T(KC_SLSH),   KC_RSFT,
-                                  KC_UP,        KC_DOWN,    KC_LBRC,       KC_RBRC,          TT(SYMB),
+                                  KC_UP,        KC_DOWN,    KC_LBRC,       KC_RBRC,          TT(WIN),
              KC_LALT,        KC_DELETE,
              KC_PGUP,
              KC_PGDN,KC_BSPC, KC_ENT
@@ -90,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,     KC_EXLM,    KC_LT,          KC_GT,          KC_EQL,         KC_AMPR, KC_F12,
                     KC_QUES,    KC_LPRN,        KC_RPRN,        KC_MINS,        KC_COLN, KC_AT,
        KC_TRNS,     KC_PLUS,    KC_PERC,        KC_DQUO,        KC_QUOT,        KC_SCLN, KC_TRNS,
-                                KC_TRNS,        KC_DOT,         KC_RGUI,        KC_RALT,  KC_RCTL,
+                                KC_TRNS,        KC_DOT,         KC_RGUI,        KC_RALT,  KC_TRANSPARENT,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
@@ -136,6 +138,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_VOLU,
        KC_VOLD, KC_MNXT, KC_MPLY
 ),
+
+[WIN] = LAYOUT_ergodox_pretty(
+    KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                 RGB_TOG,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPACE,
+    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_LBRACKET,                                    KC_RBRACKET,    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_MINUS,
+    KC_LCTRL,        KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
+    KC_LSPO,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_MINUS,                                       KC_EQUAL,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,
+    LCTL_T(KC_ESCAPE),KC_LALT,        KC_LGUI,        KC_LEFT,        KC_RIGHT,                                                                                                       KC_DOWN,        KC_UP,          KC_RGUI,        KC_RALT,        KC_TRANSPARENT,
+                                                                                                    KC_LCTRL,       KC_LALT,        KC_DELETE,      KC_ESCAPE,
+                                                                                                                    KC_LGUI,        KC_TRANSPARENT,
+                                                                                    KC_SPACE,       KC_BSPACE,      TT(WIN_SYM),          KC_TRANSPARENT,          KC_TRANSPARENT,          KC_ENTER
+),
+[WIN_SYM] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,                                          KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
+    KC_TRANSPARENT, KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,                                 KC_TRANSPARENT, KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_F12,
+    KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSLASH,
+    KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_MINUS,       KC_EQUAL,       KC_LBRACKET,    KC_RBRACKET,    KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+)
 };
 
 // Runs just one time when the keyboard initializes.
@@ -159,6 +182,9 @@ void matrix_scan_user(void) {
       break;
     case MDIA:
       ergodox_right_led_2_on();
+      break;
+    case WIN:
+      ergodox_right_led_3_on();
       break;
     default:
       // none
